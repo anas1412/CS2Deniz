@@ -26,7 +26,7 @@ Whether you downloaded the release or built it yourself, you **must** have these
 
 2.  **Undefeated Font**  
     The overlay requires this specific font to render text correctly.  
-    *   Locate the font file in the `assets/` folder.
+    *   Locate the font file in the CS2Deniz.zip file or `assets/` folder.
     *   Right-click the font file and select **Install**.
 
 3.  **Administrative Privileges**  
