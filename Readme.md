@@ -71,7 +71,7 @@ The application generates a `config.json` file after the first run. You can modi
 
 ## 👨‍💻 For Developers: Building from Source
 
-If you want to modify the code or build the project yourself, you need the Development SDK.
+If you want to modify the code or build the project yourself, follow these instructions to create a clean, single-file executable.
 
 ### Build Prerequisites
 *   **.NET 8.0 SDK (v8.0.416)**  
@@ -84,12 +84,22 @@ If you want to modify the code or build the project yourself, you need the Devel
     ```powershell
     dotnet clean
     ```
-3.  Build the project:
+3.  Publish the project as a single file (Release mode):
     ```powershell
-    dotnet build
+    dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true --self-contained false
     ```
-4.  Once the build is successful, you will find `CS2Deniz.exe` and `Configuration.exe` in:
-    `.\bin\Debug\`
+4.  **Locate the Output:**
+    The executable will be located in:
+    `.\bin\Release\net8.0-windows\win-x64\publish\`
+
+5.  **Create the Config Tool:**
+    *   Go to the publish folder above.
+    *   Copy `CS2Deniz.exe`.
+    *   Paste it in the same folder and rename it to **`Configuration.exe`**.
+    *   *Note: Both files are required if you want to use the menu, but they share the same internal code.*
+
+
+
 
 ---
 
