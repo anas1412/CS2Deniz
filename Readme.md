@@ -24,7 +24,7 @@ Whether you downloaded the release or built it yourself, you **must** have these
     Required to run the application.  
     [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exer)
 
-2.  **UNKNOWN/Undefeated Font**  
+2.  **Undefeated Font**  
     The overlay requires this specific font to render text correctly.  
     *   Locate the font file in the `assets/` folder.
     *   Right-click the font file and select **Install**.
@@ -97,9 +97,6 @@ If you want to modify the code or build the project yourself, follow these instr
     *   Copy `CS2Deniz.exe`.
     *   Paste it in the same folder and rename it to **`Configuration.exe`**.
     *   *Note: Both files are required if you want to use the menu, but they share the same internal code.*
-
-
-
 
 ---
 
