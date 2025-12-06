@@ -25,6 +25,12 @@
 
 > **⚠️ DISCLAIMER:** This software is for **educational purposes only**. Using cheats in online games violates Terms of Service and can lead to account bans. The author assumes no responsibility for how this software is used or any consequences resulting from its use.
 
+**Regarding Bans:**
+1.  **VAC Safety:** This software is designed to be **VAC Undetected** by operating entirely externally without memory injection.
+2.  **User Responsibility:** The author is not responsible for bans resulting from **obvious/blatant usage**. If you use aimbot with high FOV or wallhack openly, you risk a behavioral ban (Game Ban) regardless of the software's stealth capabilities.
+
+**Use at your own risk.**
+
 ---
 
 ## 📥 Download
