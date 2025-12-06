@@ -6,40 +6,31 @@
 
 ---
 
-## 🛠️ Prerequisites
+## 📥 Download
 
-Before running or building the project, ensure you have the following installed on your system:
+If you just want to use the tool without building it yourself, download the latest pre-compiled version here:
 
-1.  **Undefeated Font**  
-    The overlay uses a specific font for rendering text.  
-    *   Locate the font file in the `assets/` folder or download it.
-    *   Right-click the font file and select **Install**.
+[**Download CS2Deniz.zip (Latest Release)**](https://github.com/anas1412/CS2Deniz/releases/latest/download/CS2Deniz.zip)
 
-2.  **.NET Desktop Runtime 8.0.22 (x64)**  
-    This application requires the .NET 8 Runtime to execute.  
-    *   [Download .NET Desktop Runtime 8.0.22 (Windows x64)](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.22-windows-x64-installer)
-
-3.  **Administrative Privileges**  
-    The application requires Administrator rights to read the game's memory and draw the overlay on top of the game window.
+*(Unzip the file to a folder of your choice before running).*
 
 ---
 
-## ⚙️ Building the Project
+## 🛠️ Prerequisites (For All Users)
 
-You can build the project using the .NET CLI or Visual Studio.
+Whether you downloaded the release or built it yourself, you **must** have these installed to run the application:
 
-1.  Open your terminal (PowerShell, CMD, or VS Code Terminal) in the project root directory.
-2.  Run the clean command to remove old artifacts:
-    ```powershell
-    dotnet clean
-    ```
-3.  Build the project:
-    ```powershell
-    dotnet build
-    ```
+1.  **.NET Desktop Runtime 8.0.22 (x64)**  
+    Required to run the application.  
+    [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exer)
 
-Once the build is successful, you will find the executables in:
-`.\bin\Debug\`
+2.  **UNKNOWN/Undefeated Font**  
+    The overlay requires this specific font to render text correctly.  
+    *   Locate the font file in the `assets/` folder.
+    *   Right-click the font file and select **Install**.
+
+3.  **Administrative Privileges**  
+    The application must be run as **Administrator** to read game memory and draw the overlay.
 
 ---
 
@@ -55,7 +46,7 @@ External overlays cannot draw over "Exclusive Fullscreen" mode.
 4.  Apply changes.
 
 ### 2. Launch the Cheat
-1.  Navigate to your output folder: `.\bin\Debug\`
+1.  Navigate to the folder where you extracted or built the tool.
 2.  Locate **`CS2Deniz.exe`**.
 3.  **Right-click** the file and select **Run as Administrator**.
 4.  The console will display: `Waiting for CS2 to start...` (if the game is not open) or `Cheat Activated!`.
@@ -64,14 +55,12 @@ External overlays cannot draw over "Exclusive Fullscreen" mode.
 
 ## 🔧 Configuration
 
-The application generates a `config.json` file in the build directory after the first run. You can modify settings in two ways:
+The application generates a `config.json` file after the first run. You can modify settings in two ways:
 
 ### Method A: Interactive Menu
-The build process automatically generates a configuration tool.
-1.  Go to `.\bin\Debug\`
-2.  Run **`Configuration.exe`**.
-3.  Use the console menu to toggle features (Aimbot, ESP, Triggerbot, etc.) and change keybinds.
-4.  Select "Save & Exit" to apply changes.
+1.  Run **`Configuration.exe`** (located in the same folder).
+2.  Use the console menu to toggle features (Aimbot, ESP, Triggerbot, etc.) and change keybinds.
+3.  Select "Save & Exit" to apply changes.
 
 ### Method B: Manual Editing
 1.  Open `config.json` with any text editor (Notepad, VS Code).
@@ -80,12 +69,36 @@ The build process automatically generates a configuration tool.
 
 ---
 
+## 👨‍💻 For Developers: Building from Source
+
+If you want to modify the code or build the project yourself, you need the Development SDK.
+
+### Build Prerequisites
+*   **.NET 8.0 SDK (v8.0.416)**  
+    Required to compile the code.  
+    [Download .NET 8.0 SDK (x64)](https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.416/dotnet-sdk-8.0.416-win-x64.exe)
+
+### Build Instructions
+1.  Clone the repository and open your terminal in the project root.
+2.  Clean previous build artifacts:
+    ```powershell
+    dotnet clean
+    ```
+3.  Build the project:
+    ```powershell
+    dotnet build
+    ```
+4.  Once the build is successful, you will find `CS2Deniz.exe` and `Configuration.exe` in:
+    `.\bin\Debug\`
+
+---
+
 ## ⌨️ Features
 
 *   **ESP (Extra Sensory Perception):** Box ESP, Skeleton ESP, Health Bars.
 *   **Aimbot:** Smooth aiming assistance with configurable keys.
 *   **Triggerbot:** Automatically fires when crosshair is over an enemy.
-*   **Bomb Site:** Shows location of the D4 planted site overlay.
+*   **Bomb Location:** Accurate C4 site location overlay.
 *   **Team Check:** Avoids locking onto or drawing ESP for teammates.
 
 ---
@@ -93,8 +106,8 @@ The build process automatically generates a configuration tool.
 ## 🛑 Troubleshooting
 
 *   **Overlay not showing?**
-    Ensure the game is in **Fullscreen Windowed** mode and you are running the `.exe` as **Administrator**.
+    Ensure CS2 is in **Fullscreen Windowed** mode and you ran the `.exe` as **Administrator**.
 *   **"Prerequisites missing" error?**
-    Install the .NET 8.0.22 Runtime linked in the Prerequisites section.
+    Install the .NET Desktop Runtime linked in the Prerequisites section.
 *   **ESP incorrect?**
     The cheat relies on memory offsets. If CS2 updates, the offsets must be updated. The application attempts to fetch the latest offsets automatically on startup.
