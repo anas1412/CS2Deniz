@@ -1,4 +1,4 @@
-# CS2Deniz
+# Fully External CS2 Tool CS2Deniz
 
 <div align="center">
   <!-- LOGO -->
