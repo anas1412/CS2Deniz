@@ -13,6 +13,9 @@
   <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" />
   <img src="https://img.shields.io/badge/Type-External-FF0000?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Game-CS2-orange?style=for-the-badge&logo=counter-strike&logoColor=white" />
+  <a href="https://www.virustotal.com/gui/file/7d4961933831dd05710ebc9e1934a41c20604e9707c9582feb89142edad7382f?nocache=1">
+  <img src="https://img.shields.io/badge/VirusTotal-3%2F72-green?style=for-the-badge&logo=virustotal&logoColor=white" alt="VirusTotal" />
+</a>
 </div>
 
 <!-- LINE SEPARATOR -->
