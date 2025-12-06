@@ -1,4 +1,9 @@
-# CS2Deniz 🌊
+# CS2Deniz
+
+<div align="center">
+  <img src="assets/logo.png" alt="CS2Deniz Logo" width="200" />
+  <br>
+</div>
 
 **CS2Deniz** is a lightweight, external cheat and overlay for **Counter-Strike 2**. It provides visual assistance and automation features while running entirely external to the game process.
 
