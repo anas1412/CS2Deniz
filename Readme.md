@@ -22,7 +22,7 @@ Whether you downloaded the release or built it yourself, you **must** have these
 
 1.  **.NET Desktop Runtime 8.0.22 (x64)**  
     Required to run the application.  
-    [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exer)
+    [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exe)
 
 2.  **Undefeated Font**  
     The overlay requires this specific font to render text correctly.  
