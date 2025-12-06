@@ -35,7 +35,8 @@ If you just want to use the tool without building it yourself, download the late
 
 *(Unzip the file to a folder of your choice before running).*
 
-**🛡️ VirusTotal Scan: [3/72 (Click to View)](https://www.virustotal.com/gui/file/7d4961933831dd05710ebc9e1934a41c20604e9707c9582feb89142edad7382f?nocache=1)**
+> [!NOTE]
+> **🛡️ VirusTotal Scan: [3/72 (Click to View)](https://www.virustotal.com/gui/file/7d4961933831dd05710ebc9e1934a41c20604e9707c9582feb89142edad7382f?nocache=1)**
 >
 > **Regarding False Positives:** The detections shown are **false positives**. Because this software interacts with game memory (reading external process memory) and uses overlay hooks, generic antivirus heuristics may flag it as suspicious. This is standard behavior for game cheats and trainers.
 
