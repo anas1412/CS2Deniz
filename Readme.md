@@ -2,8 +2,8 @@
 
 <div align="center">
   <!-- LOGO -->
-  <img src="assets/logo.png" alt="CS2Deniz Logo" width="200" />
-
+  <!-- <img src="assets/logo.png" alt="CS2Deniz Logo" width="200" />-->
+<img src="assets/social_preview_small.jpg" alt="CS2Deniz Logo" width="800" />
   <br>
   <br>
 
