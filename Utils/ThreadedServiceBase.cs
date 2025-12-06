@@ -27,9 +27,14 @@ public abstract class ThreadedServiceBase :
 
     public virtual void Dispose()
     {
-        Thread.Interrupt();
-        if (!Thread.Join(ThreadTimeout)) Thread.Abort();
+        // 1. Signal the thread to stop waiting and exit
+        Thread.Interrupt(); 
+        
+        // 2. Wait for it to finish gracefully
+        Thread.Join(ThreadTimeout); 
 
+        // REMOVED: Thread.Abort() - This crashes the game/app in .NET 8
+        
         Thread = default;
     }
 
@@ -52,8 +57,14 @@ public abstract class ThreadedServiceBase :
                 Thread.Sleep(ThreadFrameSleep);
             }
         }
+        catch (ThreadInterruptedException)
+        {
+            // This is expected when Dispose() calls Thread.Interrupt()
+            // It allows the thread to exit the loop cleanly.
+        }
         catch (NullReferenceException)
         {
+            // Existing error handling
         }
     }
 

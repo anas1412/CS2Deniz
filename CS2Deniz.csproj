@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWpf>true</UseWpf>
+    <LangVersion>latest</LangVersion>
+    
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    
+    <ApplicationIcon>assets\logo.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GameOverlay.Net" Version="4.3.1"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
+    <PackageReference Include="Overlay.NET" Version="1.0.2"/>
+    <PackageReference Include="PresentationFramework" Version="4.6.0"/>
+    <PackageReference Include="SharpDX.Direct3D9" Version="4.2.0"/>
+    <PackageReference Include="SharpDX.DXGI" Version="4.2.0"/>
+  </ItemGroup>
+
+  <!-- ADD THIS BLOCK HERE -->
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Message Text="Generating Configuration.exe..." Importance="high" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).exe" DestinationFiles="$(TargetDir)Configuration.exe" />
+  </Target>
+
+</Project>

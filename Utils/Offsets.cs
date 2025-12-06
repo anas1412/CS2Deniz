@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 using CS2Cheat.DTO.ClientDllDTO;
 using CS2Cheat.Utils.DTO;
 using Newtonsoft.Json;
@@ -10,10 +12,18 @@ namespace CS2Cheat.Utils;
 
 public abstract class Offsets
 {
-    #region offsets
+    #region Constants & Links
+
+    // Use the "raw" versions of the GitHub links to get pure JSON text
+    private const string UrlClientDll = "https://raw.githubusercontent.com/anas1412/CS2Deniz/main/output/client_dll.json";
+    private const string UrlOffsets = "https://raw.githubusercontent.com/anas1412/CS2Deniz/main/output/offsets.json";
 
     public const float WeaponRecoilScale = 2f;
     
+    #endregion
+
+    #region Static Fields
+
     public static int dwLocalPlayerPawn;
     public static int dwLocalPlayerController;
     public static int dwEntityList;
@@ -62,24 +72,40 @@ public abstract class Offsets
         { "leg_upper_R", 25 }, { "leg_lower_R", 26 }, { "ankle_R", 27 }
     };
 
+    #endregion
+
     public static async Task UpdateOffsets()
     {
         try
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("[*] Loading local offsets from 'output' folder...");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("[*] Initiating Online Offset Update...");
+            Console.WriteLine("[*] Source: GitHub (anas1412/CS2Deniz)");
 
-            // 1. Read Local Files
-            string jsonOffsets = ReadLocalFile("offsets.json");
-            string jsonClient = ReadLocalFile("client_dll.json");
+            using var client = new HttpClient();
+            // Optional: Set a User-Agent to avoid potential blocks by GitHub
+            client.DefaultRequestHeaders.Add("User-Agent", "CS2Cheat-Updater");
 
+            // 1. Download JSON Data
+            Console.Write("[*] Downloading offsets.json... ");
+            string jsonOffsets = await client.GetStringAsync(UrlOffsets);
+            Console.WriteLine("Done.");
+
+            Console.Write("[*] Downloading client_dll.json... ");
+            string jsonClient = await client.GetStringAsync(UrlClientDll);
+            Console.WriteLine("Done.");
+
+            // 2. Deserialize
+            Console.WriteLine("[*] Parsing JSON data...");
             var sourceDataDw = JsonConvert.DeserializeObject<OffsetsDTO>(jsonOffsets);
             var sourceDataClient = JsonConvert.DeserializeObject<ClientDllDTO>(jsonClient);
 
-            Console.WriteLine("[*] Files loaded. Parsing...");
-
+            // 3. Map Data
+            Console.WriteLine("[*] Mapping new offsets to memory...");
             dynamic destData = new ExpandoObject();
 
+            // Helper functions
             long GetOffset(Dictionary<string, long> dict, string key) 
             {
                 if (dict != null && dict.TryGetValue(key, out var val)) return val;
@@ -96,7 +122,7 @@ public abstract class Offsets
                 return 0;
             }
 
-            // Global Offsets
+            // --- Global Offsets Mapping ---
             destData.dwLocalPlayerController = GetOffset(sourceDataDw.client_dll, "dwLocalPlayerController");
             destData.dwEntityList = GetOffset(sourceDataDw.client_dll, "dwEntityList");
             destData.dwViewMatrix = GetOffset(sourceDataDw.client_dll, "dwViewMatrix");
@@ -106,7 +132,7 @@ public abstract class Offsets
             destData.dwGlobalVars = GetOffset(sourceDataDw.client_dll, "dwGlobalVars");
             destData.dwBuildNumber = GetOffset(sourceDataDw.engine2_dll, "dwBuildNumber");
 
-            // Schema Fields
+            // --- Schema Fields Mapping ---
             destData.m_fFlags = GetField("C_BaseEntity", "m_fFlags");
             destData.m_pGameSceneNode = GetField("C_BaseEntity", "m_pGameSceneNode");
             destData.m_lifeState = GetField("C_BaseEntity", "m_lifeState");
@@ -134,45 +160,31 @@ public abstract class Offsets
             destData.m_flC4Blow = GetField("C_PlantedC4", "m_flC4Blow");
             destData.m_bBeingDefused = GetField("C_PlantedC4", "m_bBeingDefused");
 
-            // --- SMART PAWN HANDLE LOOKUP ---
-            // Try to find the pawn handle offset dynamically
+            // --- Smart Pawn Lookup ---
             long hPawn = GetField("CBasePlayerController", "m_hPawn");
             if (hPawn == 0) hPawn = GetField("CCSPlayerController", "m_hPlayerPawn");
             destData.m_hPawn = hPawn;
 
+            // 4. Update Static Classes
             UpdateStaticFields(destData);
             
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"[SUCCESS] EntityList: {destData.dwEntityList}");
-            Console.WriteLine($"[SUCCESS] ViewMatrix: {destData.dwViewMatrix}");
-            Console.WriteLine($"[SUCCESS] m_hPawn: 0x{destData.m_hPawn:X}");
+            Console.WriteLine("[SUCCESS] Offsets updated successfully!");
+            Console.WriteLine($" > EntityList: 0x{destData.dwEntityList:X}");
+            Console.WriteLine($" > ViewMatrix: 0x{destData.dwViewMatrix:X}");
+            Console.WriteLine($" > LocalPawn:  0x{destData.dwLocalPlayerPawn:X}");
+            Console.WriteLine($" > m_hPawn:    0x{destData.m_hPawn:X}");
+            Console.WriteLine("--------------------------------------------------");
         }
         catch (Exception ex)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"[ERROR] Local File Load Failed: {ex.Message}");
-            Console.WriteLine("Make sure 'output' folder with .json files is in the same folder as the .exe!");
-            throw;
+            Console.WriteLine("\n[ERROR] Failed to update offsets from GitHub.");
+            Console.WriteLine($"[ERROR] Details: {ex.Message}");
+            Console.WriteLine("Please check your internet connection.");
+            Console.ResetColor();
+            throw; // Re-throw to ensure the main program knows initialization failed
         }
-    }
-
-    private static string ReadLocalFile(string filename)
-    {
-        // 1. Check current directory (where .exe is)
-        string basePath = AppDomain.CurrentDomain.BaseDirectory;
-        string path = Path.Combine(basePath, "output", filename);
-        
-        if (File.Exists(path)) return File.ReadAllText(path);
-
-        // 2. Check up to 4 levels back (useful when running from Visual Studio bin/debug/...)
-        for (int i = 0; i < 4; i++)
-        {
-            basePath = Path.Combine(basePath, "..");
-            path = Path.Combine(basePath, "output", filename);
-            if (File.Exists(path)) return File.ReadAllText(path);
-        }
-
-        throw new FileNotFoundException($"Could not find '{filename}' in any 'output' folder.");
     }
 
     private static void UpdateStaticFields(dynamic data)
@@ -212,6 +224,4 @@ public abstract class Offsets
         m_flC4Blow = (int)data.m_flC4Blow;
         m_bBeingDefused = (int)data.m_bBeingDefused;
     }
-
-    #endregion
 }

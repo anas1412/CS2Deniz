@@ -1,5 +1,12 @@
 /obj
 /.vs/CS2Cheat/FileContentIndex
 /.vs/CS2Cheat/v17
-/bin/Debug/net8.0-windows
+/bin/*
 /.vs/CS2Cheat/DesignTimeBuild
+
+# Ignore everything inside /output
+output/*
+
+# But keep these two files
+!output/client_dll.json
+!output/offsets.json

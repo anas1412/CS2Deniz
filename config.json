@@ -1,0 +1,11 @@
+{
+  "AimBot": true,
+  "BombTimer": true,
+  "EspAimCrosshair": false,
+  "EspBox": true,
+  "SkeletonEsp": false,
+  "TriggerBot": true,
+  "AimBotKey": 1,
+  "TriggerBotKey": 164,
+  "TeamCheck": true
+}
