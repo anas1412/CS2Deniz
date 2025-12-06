@@ -1,9 +1,22 @@
 # CS2Deniz
 
 <div align="center">
+  <!-- LOGO -->
   <img src="assets/logo.png" alt="CS2Deniz Logo" width="200" />
+
   <br>
+  <br>
+
+  <!-- TAGS / BADGES -->
+  <img src="https://img.shields.io/badge/Language-C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" />
+  <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" />
+  <img src="https://img.shields.io/badge/Type-External-FF0000?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Game-CS2-orange?style=for-the-badge&logo=counter-strike&logoColor=white" />
 </div>
+
+<!-- LINE SEPARATOR -->
+<hr>
 
 **CS2Deniz** is a lightweight, external cheat and overlay for **Counter-Strike 2**. It provides visual assistance and automation features while running entirely external to the game process.
 
