@@ -33,6 +33,35 @@
 
 ---
 
+## ⌨️ Features
+
+### 🧠 **Intelligent Aimbot**
+*   **Humanized Movement:** Uses "WindMouse" algorithm to mimic human cursor movement, reducing detection risk.
+*   **Dynamic Smoothing:** Automatically adjusts smoothing and FOV based on your hit success rate.
+*   **Bone Selection:** Prioritizes Head > Neck > Chest > Pelvis.
+*   **Recoil Control System (RCS):** Compensates for weapon recoil (Aim Punch).
+*   **Prediction:** Accounts for target velocity to hit moving enemies.
+
+### 👁️ **Visuals (ESP)**
+*   **Box ESP:** Draws 2D bounding boxes around enemies.
+*   **Skeleton ESP:** Visualizes enemy bone structure for clear movement reading.
+*   **Info Overlays:** Displays Name, Health (Bar + Text), and Current Weapon (Icon).
+*   **Status Indicators:** Shows if an enemy is **Flashed**, **Scoped**, or **Shifting**.
+*   **Recoil Crosshair:** Shows exactly where bullets will land.
+
+### 🔫 **Triggerbot**
+*   **Auto-Fire:** Automatically shoots when an enemy crosses your crosshair (Default: **Left Alt**).
+*   **Jump Check:** Prevents firing while mid-air (velocity check) to ensure accuracy.
+*   **Reaction Delay:** Human-like delay before firing.
+
+### ⚙️ **Miscellaneous**
+*   **Automatic Offsets:** Fetches the latest game offsets from GitHub on every launch—no manual updating required!
+*   **Bomb Status:** Displays the C4 plant site (A or B).
+*   **Stream Proof:** Uses `SetWindowDisplayAffinity` to hide visuals from capture software (OBS/Discord).
+*   **Team Check:** Ignores teammates for both ESP and Aimbot.
+
+---
+
 ## 📥 Download
 
 If you just want to use the tool without building it yourself, download the latest pre-compiled version here:
@@ -48,21 +77,24 @@ If you just want to use the tool without building it yourself, download the late
 
 ---
 
-## 🛠️ Prerequisites (For All Users)
+## 🛠️ Prerequisites
 
-Whether you downloaded the release or built it yourself, you **must** have these installed to run the application:
+The application is designed to **automatically install** necessary components (Runtime & Font) upon the first launch.
 
-1.  **.NET Desktop Runtime 8.0.22 (x64)**  
-    Required to run the application.  
-    [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exe)
+However, if the automatic setup fails or the application does not start, you may need to install them manually:
 
-2.  **Undefeated Font**  
-    The overlay requires this specific font to render text correctly.  
-    *   Locate the font file in the CS2Deniz.zip file or `assets/` folder.
-    *   Right-click the font file and select **Install**.
+1.  **Administrative Privileges (REQUIRED)**  
+    The application **must** be run as **Administrator** to perform the automatic setup, read game memory, and draw the overlay.
 
-3.  **Administrative Privileges**  
-    The application must be run as **Administrator** to read game memory and draw the overlay.
+2.  **.NET Desktop Runtime 8.0.22 (x64)**  
+    *   **Auto-Install:** The app attempts to download and install this if missing.
+    *   **Manual:** [Download Runtime Installer](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.22/windowsdesktop-runtime-8.0.22-win-x64.exe)
+
+3.  **Undefeated Font**  
+    *   **Auto-Install:** The app extracts and registers the font automatically.
+    *   **Manual:**
+        *   Locate `undefeated.ttf` in the `assets/` folder.
+        *   Right-click the file and select **Install**.
 
 ---
 
@@ -132,21 +164,11 @@ If you want to modify the code or build the project yourself, follow these instr
 
 ---
 
-## ⌨️ Features
-
-*   **ESP (Extra Sensory Perception):** Box ESP, Skeleton ESP, Health Bars.
-*   **Aimbot:** Smooth aiming assistance with configurable keys.
-*   **Triggerbot:** Automatically fires when crosshair is over an enemy.
-*   **Bomb Location:** Accurate C4 site location overlay.
-*   **Team Check:** Avoids locking onto or drawing ESP for teammates.
-
----
-
 ## 🛑 Troubleshooting
 
 *   **Overlay not showing?**
     Ensure CS2 is in **Fullscreen Windowed** mode and you ran the `.exe` as **Administrator**.
-*   **"Prerequisites missing" error?**
-    Install the .NET Desktop Runtime linked in the Prerequisites section.
+*   **App fails to start or shows a .NET error?**
+    If the automatic setup fails to launch, manually install the .NET Desktop Runtime linked in the Prerequisites section.
 *   **ESP incorrect?**
     The cheat relies on memory offsets. If CS2 updates, the offsets must be updated. The application attempts to fetch the latest offsets automatically on startup.

@@ -13,7 +13,7 @@
     <PlatformTarget>x64</PlatformTarget>
     
     <ApplicationIcon>assets\logo.ico</ApplicationIcon>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -34,6 +34,10 @@
     <Compile Remove="output\**" />
     <EmbeddedResource Remove="output\**" />
     <None Remove="output\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assets\undefeated.ttf" />
   </ItemGroup>
 
   <!-- ADD THIS BLOCK HERE -->
