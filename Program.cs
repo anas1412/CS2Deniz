@@ -38,10 +38,11 @@ public class Program :
 
         // 2. Cheat Mode - Introduction
         var version = Assembly.GetExecutingAssembly().GetName().Version;
-        Console.Title = $"CS2Deniz External v{version}";
+        string versionStr = version != null ? $"{version.Major}.{version.Minor}.{version.Build}" : "1.1.0";
+        Console.Title = $"CS2Deniz External v{versionStr}";
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("========================================");
-        Console.WriteLine($"      CS2Deniz External Cheat v{version}      ");
+        Console.WriteLine($"      CS2Deniz External Cheat v{versionStr}      ");
         Console.WriteLine("========================================");
         Console.ResetColor();
         Console.WriteLine("[Reminder] Set CS2 to 'Fullscreen Windowed' or 'Windowed' mode.");
