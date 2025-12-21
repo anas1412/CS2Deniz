@@ -313,6 +313,7 @@
             background: linear-gradient(rgba(13,13,14,0.9), rgba(13,13,14,0.9)), url('assets/social_preview_small.jpg');
             background-size: cover;
             background-attachment: fixed;
+            background-position: center center; /* Ensure image is centered */
             padding: 100px 5%;
             border-top: var(--glass-border);
             border-bottom: var(--glass-border);
@@ -434,15 +435,33 @@
             cursor: pointer;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-                justify-content: space-between;
-                padding: 15px 5%;
-            }
-            
-            .hamburger {
+                                /* Responsive */
+
+                                @media (max-width: 768px) {
+
+                                    .technical {
+
+                                        background: linear-gradient(rgba(13,13,14,0.9), rgba(13,13,14,0.9)), url('assets/social_preview_small.jpg');
+
+                                        background-size: cover;
+
+                                        background-attachment: scroll; /* Image scrolls with content on mobile */
+
+                                        background-position: center center;
+
+                                    }
+
+                        
+
+                                    nav {
+
+                                        flex-wrap: wrap; 
+
+                                        justify-content: space-between;
+
+                                        padding: 15px 5%;
+
+                                    }            .hamburger {
                 display: block;
             }
 
