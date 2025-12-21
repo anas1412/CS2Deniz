@@ -231,9 +231,9 @@
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -427,11 +427,79 @@
             font-size: 0.9rem;
         }
 
+    <style>
+        /* ... (existing styles) ... */
+        
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .nav-links { display: none; } /* Simplified for demo */
-            .hero-buttons { flex-direction: column; }
+            nav {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 15px 5%;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 20px;
+                gap: 20px;
+                order: 3;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            nav .btn-primary {
+                display: none;
+                width: 100%;
+                justify-content: center;
+                margin-top: 20px;
+                order: 4;
+            }
+
+            nav .btn-primary.active {
+                display: inline-flex;
+            }
+
+            .hero h1 { 
+                font-size: 2.8rem; 
+            }
+            
+            .hero-buttons { 
+                flex-direction: column; 
+            }
+
+            .tech-container {
+                flex-direction: column;
+            }
+
+            .tech-content, .tech-visual, .feature-card {
+                width: 100%;
+                min-width: 0; 
+            }
+
+            .installation {
+                padding: 60px 5%;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -445,6 +513,11 @@
         <div class="nav-logo">
             <img src="assets/logo.png" alt="CS2Deniz Logo" style="height: 40px; width: auto; border-radius: 4px;"> CS2Deniz
         </div>
+        
+        <div class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#security">Security</a>
@@ -505,7 +578,7 @@
                     <li>Skeleton & Box ESP</li>
                     <li>Health Bars & Weapon Icons</li>
                     <li>Flashed/Scoped Status</li>
-                    <li>Bomb Timer & Site</li>
+                    <li>Recoil Crosshair</li>
                 </ul>
             </div>
 
@@ -519,6 +592,19 @@
                     <li>Velocity Jump Checks</li>
                     <li>Humanized Delays</li>
                     <li>Team Check Safety</li>
+                </ul>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h3>Game Sense & Misc</h3>
+                <p>Essential utilities for total match control.</p>
+                <ul class="feature-list">
+                    <li>C4 Plant Site Alert</li>
+                    <li>OBS Stream Proof</li>
+                    <li>Auto-Update Offsets</li>
+                    <li>Interactive Config</li>
                 </ul>
             </div>
         </div>
@@ -666,6 +752,18 @@
                 });
             });
         });
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navBtn = document.querySelector('nav .btn-primary');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navBtn.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
