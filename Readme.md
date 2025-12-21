@@ -55,7 +55,7 @@
 *   **Reaction Delay:** Human-like delay before firing.
 
 ### ⚙️ **Miscellaneous**
-*   **Automatic Offsets:** Fetches the latest game offsets from GitHub on every launch—no manual updating required!
+*   **Automatic Offsets:** Fetches the latest game offsets from GitHub on every launch. No manual updating required!
 *   **Bomb Status:** Displays the C4 plant site (A or B).
 *   **Stream Proof:** Uses `SetWindowDisplayAffinity` to hide visuals from capture software (OBS/Discord).
 *   **Team Check:** Ignores teammates for both ESP and Aimbot.
