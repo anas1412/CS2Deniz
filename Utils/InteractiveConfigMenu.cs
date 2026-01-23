@@ -45,18 +45,32 @@ namespace CS2Cheat.Utils
                     case "6": config.TriggerBot = !config.TriggerBot; break;
                     case "7": config.TeamCheck = !config.TeamCheck; break;
                     case "8":
-                        Console.Write("Enter new AimBot key (e.g., LButton, LMenu, etc.): ");
-                        if (Enum.TryParse(Console.ReadLine(), out ProcessKeys aimKey))
+                        Console.WriteLine("\nCommon Keys: LButton, RButton, MButton, LMenu (Left Alt), RMenu (Right Alt), Capital (Caps Lock)");
+                        Console.Write($"Enter new AimBot key (current: {config.AimBotKey}): ");
+                        var aimInput = Console.ReadLine();
+                        if (!string.IsNullOrEmpty(aimInput) && Enum.TryParse(aimInput, true, out ProcessKeys aimKey))
+                        {
                             config.AimBotKey = aimKey;
+                            Console.WriteLine($"AimBot key set to: {aimKey}");
+                        }
                         else
-                            Console.WriteLine("Invalid key!");
+                        {
+                            Console.WriteLine("Invalid or empty key. No changes made.");
+                        }
                         break;
                     case "9":
-                        Console.Write("Enter new TriggerBot key (e.g., LButton, LMenu, etc.): ");
-                        if (Enum.TryParse(Console.ReadLine(), out ProcessKeys triggerKey))
+                        Console.WriteLine("\nCommon Keys: LButton, RButton, MButton, LMenu (Left Alt), RMenu (Right Alt), Capital (Caps Lock)");
+                        Console.Write($"Enter new TriggerBot key (current: {config.TriggerBotKey}): ");
+                        var triggerInput = Console.ReadLine();
+                        if (!string.IsNullOrEmpty(triggerInput) && Enum.TryParse(triggerInput, true, out ProcessKeys triggerKey))
+                        {
                             config.TriggerBotKey = triggerKey;
+                            Console.WriteLine($"TriggerBot key set to: {triggerKey}");
+                        }
                         else
-                            Console.WriteLine("Invalid key!");
+                        {
+                            Console.WriteLine("Invalid or empty key. No changes made.");
+                        }
                         break;
                     case "0":
                         ConfigManager.Save(config);
