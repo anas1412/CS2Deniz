@@ -1,11 +1,5 @@
-20:00:35 [INFO] found 16 buttons
-20:00:36 [INFO] found 132 interfaces across 33 modules
-20:00:36 [ERROR] outdated pattern: dwPlantedC4
-20:00:37 [ERROR] outdated pattern: dwGameEntitySystem
-20:00:37 [ERROR] outdated pattern: dwNetworkGameClient_maxClients
-20:00:37 [ERROR] outdated pattern: dwNetworkGameClient
-20:00:37 [ERROR] outdated pattern: dwSoundSystem_engineViewData
-20:00:37 [INFO] found 27 offsets across 5 modules
-20:00:37 [ERROR] failed to read cs2_dumper::analysis::schemas::schemas<memflow::plugins::os::cglue_processinstance::cglue_internal::ProcessInstance<'_, cglue::boxed::CBox<'_, cglue::trait_group::c_void>, cglue::arc::CArc<cglue::trait_group::c_void>>>: outdated schema system pattern
-20:00:37 [INFO] found 0 classes and 0 enums across 0 modules
-20:00:37 [INFO] analysis completed in 1.82s
+20:48:38 [INFO] found 16 buttons
+20:48:39 [INFO] found 132 interfaces across 33 modules
+20:48:40 [INFO] found 32 offsets across 5 modules
+20:48:40 [INFO] found 1466 classes and 421 enums across 16 modules
+20:48:40 [INFO] analysis completed in 2.13s
